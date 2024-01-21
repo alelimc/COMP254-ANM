@@ -179,37 +179,45 @@ public class DoublyLinkedList<E> {
     /**
      * Produces a string representation of the contents of the list.
      * This exists for debugging purposes only.
+     * This includes a check for null elements in the loop. If an element is null,
+     * it will be skipped in the string representation.  After making this change, the output should not
+     * include null in the concatenated list.
      */
     public String toString() {
         StringBuilder sb = new StringBuilder("(");
         Node<E> walk = header.getNext();
         while (walk != null && walk != trailer) {
-            sb.append(walk.getElement());
+            if (walk.getElement() != null) {
+                sb.append(walk.getElement());
+                if (walk.getNext() != trailer) {
+                    sb.append(", ");
+                }
+            }
             walk = walk.getNext();
-            if (walk != trailer)
-                sb.append(", ");
         }
         sb.append(")");
         return sb.toString();
     }
 
     // Method to concatenate two doubly linked lists
-    public void concatenate(DoublyLinkedList<E> otherList) {
-        if (otherList.size == 0) {
+    public void concatenate(DoublyLinkedList<E> nList) {
+        if (nList.size == 0) {
             return; // Nothing to concatenate if the other list is empty
         }
 
         // Connect the end of this list to the beginning of the other list
-        trailer.prev.next = otherList.header.next;
-        otherList.header.next.prev = trailer;
+        //trailer.prev.next = nList.header.next;
+        trailer.prev.next = nList.header.next;
+        nList.header.next.prev = trailer;
+        //nList.header.next = trailer;
 
         // Update the size of this list
-        size += otherList.size;
+        size += nList.size;
 
         // Clear the other list
-        otherList.header.next = otherList.trailer;
-        otherList.trailer.prev = otherList.header;
-        otherList.size = 0;
+        nList.header.next = nList.trailer;
+        nList.trailer.prev = nList.header;
+        nList.size = 0;
     }
 
 
