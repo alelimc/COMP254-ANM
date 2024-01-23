@@ -29,6 +29,7 @@
  * @author Roberto Tamassia
  * @author Michael H. Goldwasser
  */
+//Assignment1 Exercise 2: Using SinglyLinkedList - swapNodes
 public class SinglyLinkedList<E> implements Cloneable {
     //---------------- nested Node class ----------------
     /**

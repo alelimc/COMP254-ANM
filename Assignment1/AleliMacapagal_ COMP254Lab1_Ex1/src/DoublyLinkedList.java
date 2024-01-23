@@ -29,6 +29,7 @@
  * @author Roberto Tamassia
  * @author Michael H. Goldwasser
  */
+//Assignment1 Exercise 1: Using DoublyLinkedList - concatenate nodes
 public class DoublyLinkedList<E> {
 
     //---------------- nested Node class ----------------
