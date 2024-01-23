@@ -221,7 +221,7 @@ public class SinglyLinkedList<E> implements Cloneable {
         return sb.toString();
     }
 
-    //swap() will swap the given two nodes
+    //swapNodes will swap the given two nodes
     public void swapNodes(String n1, String n2){
         Node<E> prevNode1 = null, prevNode2 = null, node1 = head, node2 = head;
 
@@ -270,10 +270,10 @@ public class SinglyLinkedList<E> implements Cloneable {
         }
     }
 
-    //display() will display all the nodes present in the list
+    //display all the nodes present in the list
     public void display() {
         //Node current will point to head
-        Node current = head;
+        Node<E> current = head;
 
         if(head == null) {
             System.out.println("List is empty");
