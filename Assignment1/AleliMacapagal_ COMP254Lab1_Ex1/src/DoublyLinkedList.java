@@ -234,10 +234,8 @@ public class DoublyLinkedList<E> {
         }
 
         // Connect the end of this list to the beginning of the other list
-        //trailer.prev.next = nList.header.next;
         trailer.prev.next = nList.header.next;
         nList.header.next.prev = trailer;
-        //nList.header.next = trailer;
 
         // Update the size of this list
         size += nList.size;
