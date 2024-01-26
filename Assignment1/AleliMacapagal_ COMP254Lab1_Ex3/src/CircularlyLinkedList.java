@@ -42,7 +42,7 @@ public class CircularlyLinkedList<E> implements Cloneable {
     private static class Node<E> {
 
         /** The element stored at this node */
-        private E element;     // an element stored at this node
+        private final E element;     // an element stored at this node
 
         /** A reference to the subsequent node in the list */
         private Node<E> next;  // a reference to the subsequent node in the list
@@ -209,7 +209,7 @@ public class CircularlyLinkedList<E> implements Cloneable {
 
 
 // main method
-    public static void main(String[] args) throws CloneNotSupportedException {
+    public static void main(String[] args)  {
         try {
             // (LAX, MSP, ATL, BOS)
             CircularlyLinkedList<String> circularList = new CircularlyLinkedList<String>();
@@ -222,14 +222,17 @@ public class CircularlyLinkedList<E> implements Cloneable {
             System.out.println("Original List:");
             System.out.println(circularList);
 
-            System.out.println("Rotate:");
-            circularList.rotate();
-            System.out.println(circularList);
+//            //for testing
+//            System.out.println("Rotate:");
+//            circularList.rotate();
+//            System.out.println(circularList);
 
             CircularlyLinkedList<String> clonedList = circularList.clone();
             System.out.println("Cloned List:");
             System.out.println(clonedList);
-        } catch (CloneNotSupportedException e) {
+        }
+        catch (CloneNotSupportedException e)
+        {
             e.printStackTrace();
         }
     }

@@ -30,7 +30,7 @@
  * @author Michael H. Goldwasser
  */
 //Assignment1 Exercise 2: Using SinglyLinkedList - swapNodes
-public class SinglyLinkedList<E> implements Cloneable {
+public class SinglyLinkedList<E> {
     //---------------- nested Node class ----------------
     /**
      * Node of a singly linked list, which stores a reference to its
@@ -40,7 +40,7 @@ public class SinglyLinkedList<E> implements Cloneable {
     private static class Node<E> {
 
         /** The element stored at this node */
-        private E element;            // reference to the element stored at this node
+        private final E element;            // reference to the element stored at this node
 
         /** A reference to the subsequent node in the list */
         private Node<E> next;         // reference to the subsequent node in the list
@@ -166,10 +166,10 @@ public class SinglyLinkedList<E> implements Cloneable {
     public boolean equals(Object o) {
         if (o == null) return false;
         if (getClass() != o.getClass()) return false;
-        SinglyLinkedList other = (SinglyLinkedList) o;   // use nonparameterized type
+        SinglyLinkedList<E> other = (SinglyLinkedList<E>) o;   // use nonparameterized type
         if (size != other.size) return false;
-        Node walkA = head;                               // traverse the primary list
-        Node walkB = other.head;                         // traverse the secondary list
+        Node<E> walkA = head;                               // traverse the primary list
+        Node<E> walkB = other.head;                         // traverse the secondary list
         while (walkA != null) {
             if (!walkA.getElement().equals(walkB.getElement())) return false; //mismatch
             walkA = walkA.getNext();
@@ -198,7 +198,7 @@ public class SinglyLinkedList<E> implements Cloneable {
 
     public int hashCode() {
         int h = 0;
-        for (Node walk=head; walk != null; walk = walk.getNext()) {
+        for (Node<E> walk = head; walk != null; walk = walk.getNext()) {
             h ^= walk.getElement().hashCode();      // bitwise exclusive-or with element's code
             h = (h << 5) | (h >>> 27);              // 5-bit cyclic shift of composite code
         }
@@ -255,7 +255,7 @@ public class SinglyLinkedList<E> implements Cloneable {
             else
                 head  = node2;
 
-            //If previous node to node2 is not null then, it will point to node1
+            //If previous node to node2 is not null then, point to node1
             if(prevNode2 != null)
                 prevNode2.next = node1;
             else
@@ -291,7 +291,7 @@ public class SinglyLinkedList<E> implements Cloneable {
     //main method
     public static void main(String[] args)
     {
-        SinglyLinkedList sList = new SinglyLinkedList();
+        SinglyLinkedList<String> sList = new SinglyLinkedList<String>();
 
         //Add nodes to the list
         sList.addFirst("LAX");
