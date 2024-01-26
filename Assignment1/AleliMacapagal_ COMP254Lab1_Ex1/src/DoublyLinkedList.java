@@ -108,8 +108,8 @@ public class DoublyLinkedList<E> {
     /** Constructs a new empty list. */
     public DoublyLinkedList() {
         header = new Node<>(null, null, null);      // create header
-        trailer = new Node<>(null, header, null);   // trailer is preceded by header
-        header.setNext(trailer);                    // header is followed by trailer
+        trailer = new Node<>(null, header, null);      // trailer is preceded by header
+        header.setNext(trailer);                            // header is followed by trailer
     }
 
     // public accessor methods
@@ -228,15 +228,15 @@ public class DoublyLinkedList<E> {
         return sb.toString();
     }
 
-    // Method to concatenate two doubly linked lists
+    // Method to concatenate two doubly linked lists L and M
     public void concatenate(DoublyLinkedList<E> nList) {
         if (nList.size == 0) {
             return; // Nothing to concatenate if the other list is empty
         }
 
         // Connect the end of this list to the beginning of the other list
-        trailer.prev.next = nList.header.next;
-        nList.header.next.prev = trailer;
+        trailer.prev.next = nList.header.next;  //this connects the node before the trailer of the current list (this) to the first node of the nList.
+        nList.header.next.prev = trailer;       //this connects the node before the header of nList to the trailer of the current list.
 
         // Update the size of this list
         size += nList.size;
@@ -268,7 +268,7 @@ public class DoublyLinkedList<E> {
         System.out.println(listM);
 
         listL.concatenate(listM);
-        System.out.println("Concatenated List L:");
+        System.out.println("Concatenated List:");
         System.out.println(listL);
     }
 

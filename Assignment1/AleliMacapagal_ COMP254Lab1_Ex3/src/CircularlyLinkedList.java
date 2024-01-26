@@ -32,6 +32,7 @@
  */
 //Assignment1 Exercise 3: Using CircularlyLinkedList
 
+@SuppressWarnings("ALL")
 public class CircularlyLinkedList<E> implements Cloneable {
 
     //---------------- nested Node class ----------------
@@ -42,7 +43,7 @@ public class CircularlyLinkedList<E> implements Cloneable {
     private static class Node<E> {
 
         /** The element stored at this node */
-        private E element;     // an element stored at this node
+        private final E element;     // an element stored at this node
 
         /** A reference to the subsequent node in the list */
         private Node<E> next;  // a reference to the subsequent node in the list
@@ -188,19 +189,18 @@ public class CircularlyLinkedList<E> implements Cloneable {
      * Clones the CircularlyLinkedList.
      * @return a new CircularlyLinkedList with the same elements as this list
      */
-    @SuppressWarnings("unchecked")
+
     public CircularlyLinkedList<E> clone() throws CloneNotSupportedException {
-        // Always use super.clone() to ensure proper object creation
-        CircularlyLinkedList<E> other = (CircularlyLinkedList<E>) super.clone();
+        CircularlyLinkedList<E> other = (CircularlyLinkedList<E>) super.clone();  //call the clone method of the superclass, which is Object, to creates a shallow copy of the object
         if (size > 0) {
             other.tail = new Node<>(tail.getElement(), null);
-            Node<E> walk = tail.getNext();
+            Node<E> walk = tail.getNext();  //walk pointer is initialized to the next node after the original tail,
             Node<E> otherTail = other.tail;
             while (walk != tail) {
-                Node<E> newest = new Node<>(walk.getElement(), null);
+                Node<E> newest = new Node<>(walk.getElement(), null);   //a new Node (newest) is created for each element in the original list
                 otherTail.setNext(newest);
                 otherTail = newest;
-                walk = walk.getNext();
+                walk = walk.getNext();      //loop  until it reaches original tail
             }
             otherTail.setNext(other.tail); // Link the tail to make it circular
         }
@@ -209,7 +209,7 @@ public class CircularlyLinkedList<E> implements Cloneable {
 
 
 // main method
-    public static void main(String[] args) throws CloneNotSupportedException {
+    public static void main(String[] args)  {
         try {
             // (LAX, MSP, ATL, BOS)
             CircularlyLinkedList<String> circularList = new CircularlyLinkedList<String>();
@@ -222,14 +222,17 @@ public class CircularlyLinkedList<E> implements Cloneable {
             System.out.println("Original List:");
             System.out.println(circularList);
 
-            System.out.println("Rotate:");
-            circularList.rotate();
-            System.out.println(circularList);
+//            //for testing
+//            System.out.println("Rotate:");
+//            circularList.rotate();
+//            System.out.println(circularList);
 
             CircularlyLinkedList<String> clonedList = circularList.clone();
             System.out.println("Cloned List:");
             System.out.println(clonedList);
-        } catch (CloneNotSupportedException e) {
+        }
+        catch (CloneNotSupportedException e)
+        {
             e.printStackTrace();
         }
     }
