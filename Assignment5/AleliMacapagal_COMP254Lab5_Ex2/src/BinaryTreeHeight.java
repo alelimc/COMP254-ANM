@@ -24,10 +24,10 @@ public class BinaryTreeHeight {
             return -1;
         }
 
-        int leftHeight = postorderTraversal(node.left);
+        int leftHeight = postorderTraversal(node.left);  //traverses down the left subtree first and then the right subtree
         int rightHeight = postorderTraversal(node.right);
 
-        int height = Math.max(leftHeight, rightHeight) + 1;
+        int height = Math.max(leftHeight, rightHeight) + 1;     //calculates the height of the current node
         System.out.println("Element: " + node.val + ", Height: " + height);
 
         return height;

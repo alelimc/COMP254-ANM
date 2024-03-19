@@ -19,12 +19,15 @@ public class HeapPriorityQueue {
         upheap(size - 1);
     }
 
+    //computes and prints, for every position p of a tree T, the element of p followed by the height of p’s subtree
+    //loop continues until either the current node reaches the root of the heap or its parent node is smaller than
+    // or equal to it, ensuring that the heap property is maintained throughout the heap.
     private void upheap(int index) {
         if (index > 0) {
-            int parentIndex = (index - 1) / 2;
+            int parentIndex = (index - 1) / 2;      //calculates the index of the parent node for the current node
 
             if (heapArray[parentIndex] > heapArray[index]) {
-                swap(parentIndex, index);
+                swap(parentIndex, index);       //swap the parent and the current node to restore the heap property
                 upheap(parentIndex);
             }
         }

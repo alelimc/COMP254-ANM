@@ -27,6 +27,9 @@ public class LinkedQueue<E> {
         }
     }
 
+    //Concatenates the contents of another queue `Q2` to the current queue by linking the tail of
+    // the current queue to the head of `Q2`. It sets the tail of the current queue to be the tail
+    // of `Q2`, effectively merging the two queues.
     public void concatenate(LinkedQueue<E> Q2) {
         if (!Q2.isEmpty()) {
             this.list.tail.setNext(Q2.list.head.getNext());
@@ -42,8 +45,10 @@ public class LinkedQueue<E> {
         queue1.enqueue(10);
         queue1.enqueue(20);
         queue1.enqueue(30);
+
         queue2.enqueue(40);
         queue2.enqueue(50);
+
         queue1.concatenate(queue2);
 
         while(!queue1.isEmpty()) {

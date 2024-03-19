@@ -15,6 +15,7 @@ public class BinaryTreeTraversal {
 
     //The worst-case running time complexities of preorderNext(p):
     // O(n), where n is the number of nodes in the binary tree.
+    //traverse the tree in a pre-order manner - root -> left subtree -> right subtree.
     public Node preorderNext(Node root, Node p) {
         Stack<Node> stack = new Stack<>();
         stack.push(root);
@@ -39,6 +40,7 @@ public class BinaryTreeTraversal {
 
     //The worst-case running time complexities of inorderNext(p):
     // O(n), where n is the number of nodes in the binary tree.
+    //iterative inorder traversal of the tree - left subtree -> root -> right subtree
     public Node inorderNext(Node root, Node p) {
         Stack<Node> stack = new Stack<>();
         Node curr = root;
@@ -68,8 +70,9 @@ public class BinaryTreeTraversal {
 
     //The worst-case running time complexities of postorderNext(p):
     // O(n), where n is the number of nodes in the binary tree.
+    //postorder traversal sequence - left subtree -> right subtree -> root
     public Node postorderNext(Node root, Node p) {
-        Stack<Node> stack = new Stack<>();
+        Stack<Node> stack = new Stack<>();  //init
         Node prev = null;
 
         if (root == null) {
@@ -78,9 +81,11 @@ public class BinaryTreeTraversal {
 
         stack.push(root);
 
+        //traversal loop
         while (!stack.isEmpty()) {
             Node curr = stack.peek();
-
+            //If prev is null (indicating the first iteration) or if curr is the left or right child of prev,
+            // it means curr is not fully explored yet.
             if (prev == null || prev.left == curr || prev.right == curr) {
                 if (curr.left != null) {
                     stack.push(curr.left);
@@ -89,7 +94,7 @@ public class BinaryTreeTraversal {
                 }
             } else if (curr.left == prev) {
                 if (curr.right != null) {
-                    stack.push(curr.right);
+                    stack.push(curr.right);     //pushes the root node onto the stack to begin the traversal.
                 }
             } else {
                 stack.pop();
@@ -119,6 +124,7 @@ public class BinaryTreeTraversal {
         Node result2 = btt.inorderNext(root, root.left); // Test inorderNext
         Node result3 = btt.postorderNext(root, root.left.left); // Test postorderNext
 
+        //display the returned position visited after p
         System.out.println(result1.val);
         System.out.println(result2.val);
         System.out.println(result3.val);

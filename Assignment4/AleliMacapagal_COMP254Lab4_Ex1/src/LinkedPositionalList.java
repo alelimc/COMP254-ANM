@@ -102,6 +102,8 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
         return new PositionIterable();
     }
 
+    //Method indexOf - returns the current index of the element stored at position p
+    // takes a `Position<E>` object `p` as a parameter, finds the index of the given position `p` within the positional list.
     public int indexOf(Position<E> p) throws IllegalArgumentException {
         int index = 0;
 
