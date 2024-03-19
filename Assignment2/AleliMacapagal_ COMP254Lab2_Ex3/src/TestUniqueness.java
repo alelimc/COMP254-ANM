@@ -10,7 +10,8 @@ public class TestUniqueness {
     //Test unique1 algorithm
         System.out.println("Testing unique1 algorithm");
         while (true) {
-            int[] data = generateData(currentN); // Generate data of size currentN; generates an array data of size currentN by calling the generateData method.
+            int[] data = generateData(currentN); // Generate data of size currentN; generates an array data of size currentN
+                                                // by calling the generateData method.
             startTime = System.currentTimeMillis(); // records the current time before starting the execution of the algorithm.
             boolean result = Uniqueness.unique1(data);  //test the uniqueness of the generated data
             endTime = System.currentTimeMillis();   //records the current time after the execution of the algorithm.

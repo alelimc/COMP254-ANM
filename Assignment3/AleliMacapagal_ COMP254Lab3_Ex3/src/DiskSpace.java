@@ -56,6 +56,8 @@ public class DiskSpace {
      * @param root the root directory to start the search from
      * @param filename the name of the file to find
      */
+    //This code will recursively search through the file system rooted at the given
+    // path and report all entries (files or directories) with the given file name.
     public static void find(File root, String filename) {
         if (root.isDirectory()) {
             for (String childname : root.list()) {
@@ -83,7 +85,8 @@ public class DiskSpace {
         }
         File root = new File(start);
         diskUsage(root);  // Calculate disk usage
+        // Search for file with this name
         System.out.println("Searching for file 'lab3exercise3.txt'...");
-        find(root, "lab3exercise3.txt");  // Search for file with name 'example.txt'
+        find(root, "lab3exercise3.txt");
     }
 }

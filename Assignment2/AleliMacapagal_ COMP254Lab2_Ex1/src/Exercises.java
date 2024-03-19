@@ -32,7 +32,7 @@ public class Exercises {
     public static int example3(int[] arr) {
         int n = arr.length, total = 0;
         for (int j=0; j < n; j++)       // loop from 0 to n-1
-            for (int k=0; k <= j; k++)    // loop from 0 to j
+            for (int k=0; k <= j; k++)  // loop from 0 to j
                 total += arr[j];
         return total;
     }
@@ -58,9 +58,9 @@ public class Exercises {
      */
     public static int example5(int[] first, int[] second) { // assume equal-length arrays
         int n = first.length, count = 0;
-        for (int i=0; i < n; i++) {     // loop from 0 to n-1
+        for (int i=0; i < n; i++) {         // loop from 0 to n-1
             int total = 0;
-            for (int j=0; j < n; j++)     // loop from 0 to n-1
+            for (int j=0; j < n; j++)       // loop from 0 to n-1
                 for (int k=0; k <= j; k++)  // loop from 0 to j
                     total += first[k];
             if (second[i] == total) count++;
@@ -71,16 +71,16 @@ public class Exercises {
     public static void main(String[] args) {
         // Test example1: Return the sum of the integers in given array.
         int[] arr1 = {10, 2, 23, 4, 15};
-        System.out.println("Example 1 output: " + Exercises.example1(arr1)); // Expected output: 15
+        System.out.println("Example 1 output: " + Exercises.example1(arr1)); // Expected output: 54
 
         // Test example2:  Return the sum of the integers with even index in given array.
         int[] arr2 = {1, 2, 3, 4, 5, 1, 2, 3, 4, 5};
-        System.out.println("Example 2 output: " + Exercises.example2(arr2)); // Expected output: 9
+        System.out.println("Example 2 output: " + Exercises.example2(arr2)); // Expected output: 15
 
         // Test example3: Return the sum of the prefix sums of given array.
         // (used small input to avoid long wait times)
         int[] arr3 = {1, 2, 3};
-        System.out.println("Example 3 output: " + Exercises.example3(arr3)); // Expected output: 18
+        System.out.println("Example 3 output: " + Exercises.example3(arr3)); // Expected output: 14
 
         // Test example4: Return the sum of the prefix sums of given array.
         int[] arr4 = {1, 2, 3, 4, 5};
@@ -90,6 +90,6 @@ public class Exercises {
         // (used small input to avoid long wait times)
         int[] first = {1, 2, 3, 4, 5};
         int[] second = {35, 7, 18, 35, 1};
-        System.out.println("Example 5 output: " + Exercises.example5(first, second)); // Expected output: 0
+        System.out.println("Example 5 output: " + Exercises.example5(first, second)); // Expected output: 2
     }
 }
