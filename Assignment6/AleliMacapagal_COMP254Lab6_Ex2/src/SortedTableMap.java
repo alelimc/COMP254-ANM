@@ -248,7 +248,7 @@ public class SortedTableMap<K,V> extends AbstractSortedMap<K,V> {
             map.put(7, "Seven");
             map.put(9, "Nine");
 
-            System.out.println("Map contains key 2 = " + map.containKey(2)); // Should print true
+            System.out.println("Map contains key 1 = " + map.containKey(1)); // Should print true
             System.out.println("Map contains key 5 = " + map.containKey(5)); // Should print false
         }
     }
